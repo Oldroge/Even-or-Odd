@@ -31,4 +31,3 @@ while True:
             vitorias += 1
     else:
         print('Jogada inválida!')
-
