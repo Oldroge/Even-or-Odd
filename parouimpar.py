@@ -1,33 +1,28 @@
 from random import randint
-print('{:=^40}'.format(' PAR OU ÍMPAR '))
-r = num = computador = 0
-vitorias = 0
+v = 0
+stop = 0
+print('{:=^40}'.format(' EVEN OR ODD '))
 while True:
-    computador = randint(1, 10)
-    jogador = str(input('VOCÊ ESCOLHE ÍMPAR OU PAR [I/P]: ')).upper().strip()[0]
-    if jogador == 'P':
-        num = int(input('Escolha um número de 1 à 10: '))
-        if computador % num == 0:
-            print(f'O computador jogou {computador} e você jogou {num}, deu PAR! VOCÊ VENCEU!!')
-            vitorias += 1
-        else:
-            print(f'O computador jogou {computador} e você jogou {num}, deu ÍMPAR! perdeu :(')
-            if vitorias < 2 > 0:
-                print(f'Você teve {vitorias} vitória!')
-            else:
-                print(f'Você teve {vitorias} vitórias!')
+    type = ' '
+    while type not in 'EO':
+        num = int(input('Choose a number between 0 and 10: '))
+        if num > 10:
             break
-    elif jogador == 'I':
-        num = int(input('Escolha um número de 1 à 10: '))
-        if computador % num == 0:
-            print(f'O computador jogou {computador} e você jogou {num}, deu PAR! perdeu :(')
-            if vitorias < 2 > 0:
-                print(f'Você teve {vitorias} vitória!')
+        computer = randint(0, 10)
+        total = computer + num
+        type = str(input('MAKE YOUR CHOICE - EVEN OR ODD: ')).strip().upper()[0]
+        print(f'You choose {num} and the computer choose {computer} the result is {total}')
+        if type == 'E' or 'O':
+            if type == 'E' and total % 2 == 0:
+                print('YOU WIN!')
+                v += 1
+            elif type == 'O' and total % 2 > 0:
+                print('YOU WIN!')
             else:
-                print(f'Você teve {vitorias} vitórias.')
-            break
+                stop = 1
+                break
         else:
-            print(f'O computador jogou {computador} e você jogou {num}, deu ÍMPAR! VOCÊ VENCEU!!!')
-            vitorias += 1
-    else:
-        print('Jogada inválida!')
+            print('Something is wrong... Try again!!')
+    if stop:
+        break
+print(f'YOU LOOSE! You had {v} victories!')
